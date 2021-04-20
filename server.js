@@ -78,13 +78,26 @@ function showDetails(request,response){
     const id = request.params.quote_id;
     const sql = `SELECT * FROM mytable WHERE id=$1;`
     client.query(sql,[id]).then(data => {
-        let dataArr = data.rows;
-        console.log(dataArr);
+        const dataArr = data.rows;
         response.render('details',{dataArr});
     })
 }
-function updateQute(request,response){}
-function deleteQute(request,response){}
+function updateQute(request,response){
+    const id = request.params.quote_id;
+    const qute = request.body.qute;
+    const sql = `UPDATE mytable SET qute=$1 WHERE id = $2;`
+    client.query(sql,[qute,id]).then(data => {
+        const dataArr = data.rows;
+        response.redirect(`/favorite-quotes/${id}`);
+    });
+}
+function deleteQute(request,response){
+    const id = request.params.quote_id;
+    const sql = `DELETE FROM mytable WHERE id=$1;`
+    client.query(sql,[id]).then(()=>{
+        response.redirect(`/showFavQutes`);
+    })
+}
 // helper functions
 function Charachter(object){
     this.name = object.character,

@@ -8,17 +8,17 @@
         <title>favorite</title>
     </head>
 <body>
-    <header>
+    <header  style="display: flex;justify-content: space-between;">
         <div>
-            <img src="/img/the_simpsons.png" alt="">
+            <img class="logo"src="/img/the_simpsons.png" alt="">
         </div>
-        <div>
+        <div style="display: flex;justify-content: center;">
             <a href="/">favourte qute</a>
             <a href="/favorite-quotes">home</a>
         </div>
     </header>
     <main>
-        <div clas="card">
+        <div>
             <% dataArr.forEach(object => { %>
                 <img src="<%= object.img %>" alt="">
                 <p><%= object.name %></p>
