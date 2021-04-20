@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/style.css">
+        <title>home</title>
+    </head>
+<body>
+    <header>
+        <div>
+            <img src="/img/the_simpsons.png" alt="">
+        </div>
+        <div>
+            <a href="/">favourte qute</a>
+            <a href="/favorite-quotes">home</a>
+        </div>
+    </header>
+    <main>
+        <div clas="card">
+            <% dataArr.forEach(object => { %>
+                <p><%= object.character %></p>
+                <p><%= object.quote %></p>
+                <img src="<%= object.image %>" alt="">
+                <form action="/save" method="POST">
+                    <input type="hidden" name="name" value="<%= object.character %>">
+                    <input type="hidden" name="qute" value="<%= object.quote %>">
+                    <input type="hidden" name="image" value="<%= object.image %>">
+                    <input type="hidden" name="dirction" value="<%= object.characterDirection %>">
+                    <input type="submit" value="favor-charactr">
+                </form>
+            <% }) %>
+        </div>
+    </main>
+</body>
+</html>
